@@ -1,0 +1,135 @@
+<template>
+  <div
+    class="skeleton-wrapper"
+    :class="{
+      'skeleton--keep': keep,
+    }"
+    :style="{
+      gap,
+      borderRadius: rounded ? radius : 'inherit',
+      animationDuration: animated ? animationDuration : 'inherit',
+      flexDirection: direction === 'vertical' ? 'column' : 'row',
+      alignItems: alignItems[align],
+    }"
+  >
+    <div
+      v-for="i in Number(repeat)"
+      :key="i"
+      class="skeleton-wrapper-item"
+      :class="[
+        {
+          'skeleton--animated': animated,
+          'skeleton--rounded': rounded,
+          'skeleton--keep': keep,
+        },
+        animated ? `skeleton--${animationName}` : '',
+      ]"
+      :style="{
+        width,
+        height,
+        gap,
+        margin: `${top} ${right} ${bottom} ${left}`,
+        borderRadius: rounded ? radius : 'inherit',
+        animationDuration: animated ? animationDuration : 'inherit',
+        flexDirection: direction === 'vertical' ? 'column' : 'row',
+        alignItems: alignItems[align],
+      }"
+    >
+      <slot />
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { PropType } from "#imports";
+
+type animation = "linear" | "boomerang" | "pulse";
+type alignItems = "start" | "center" | "end";
+type itemDirection = "vertical" | "horizontal";
+
+const alignItems = {
+  start: "flex-start",
+  center: "center",
+  end: "flex-end",
+};
+
+defineProps({
+  keep: {
+    type: Boolean,
+    default: false,
+  },
+  align: {
+    type: String as PropType<alignItems>,
+    default: "center",
+  },
+  direction: {
+    type: String as PropType<itemDirection>,
+    default: "horizontal",
+  },
+  repeat: {
+    type: String,
+    default: "1",
+  },
+  animated: {
+    type: Boolean,
+    default: false,
+  },
+  animationName: {
+    type: String as PropType<animation>,
+    default: "linear",
+  },
+  animationDuration: {
+    type: String,
+    default: "3s",
+  },
+  rounded: {
+    type: Boolean,
+    default: false,
+  },
+  radius: {
+    type: String,
+    default: "4px",
+  },
+  width: {
+    type: String,
+    default: "100%",
+  },
+  height: {
+    type: String,
+    default: "100%",
+  },
+  top: {
+    type: String,
+    default: "0",
+  },
+  left: {
+    type: String,
+    default: "0",
+  },
+  bottom: {
+    type: String,
+    default: "0",
+  },
+  right: {
+    type: String,
+    default: "0",
+  },
+  gap: {
+    type: String,
+    default: "20px",
+  },
+});
+</script>
+
+<style>
+.skeleton-wrapper,
+.skeleton-wrapper-item {
+  display: flex;
+  width: 100%;
+}
+
+.skeleton-wrapper.skeleton--keep,
+.skeleton-wrapper-item.skeleton--keep {
+  display: block !important;
+}
+</style>

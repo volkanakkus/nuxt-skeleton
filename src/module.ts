@@ -24,5 +24,29 @@ export default defineNuxtModule<ModuleOptions>({
       global: true,
       filePath: resolve("./runtime/Skeleton.vue"),
     });
+
+    addComponent({
+      name: `${options.prefix}SkeletonBase`,
+      global: true,
+      filePath: resolve("./runtime/SkeletonBase.vue"),
+    });
+
+    addComponent({
+      name: `${options.prefix}SkeletonBlock`,
+      global: true,
+      filePath: resolve("./runtime/SkeletonBlock.vue"),
+    });
+
+    addComponent({
+      name: `${options.prefix}SkeletonWrap`,
+      global: true,
+      filePath: resolve("./runtime/SkeletonWrap.vue"),
+    });
+
+    addComponent({
+      name: `${options.prefix}SkeletonDiv`,
+      global: true,
+      filePath: resolve("./runtime/SkeletonDiv.vue"),
+    });
   },
 });
