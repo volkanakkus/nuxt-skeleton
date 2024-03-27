@@ -1,7 +1,7 @@
 {
   "name": "nuxt-skeleton",
-  "version": "0.0.1",
-  "description": "A skeleton for Nuxt 3.",
+  "version": "1.0.0",
+  "description": "A skeleton & placeholder module for Nuxt 3",
   "repository": "volkanakkus/nuxt-skeleton",
   "license": "MIT",
   "type": "module",
