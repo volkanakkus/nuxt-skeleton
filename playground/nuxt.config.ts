@@ -1,7 +1,12 @@
 export default defineNuxtConfig({
   modules: ["../src/module"],
-  countdown: {
-    // prefix: 'MY',
+  skeleton: {
+    components: {
+      SkeletonDiv: "SDiv",
+      SkeletonBlock: "SBlock",
+      SkeletonWrap: "SWrap",
+      Skeleton: "S",
+    },
   },
   devtools: { enabled: true },
 });
