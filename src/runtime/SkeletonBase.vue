@@ -7,7 +7,7 @@
     :style="{
       gap,
       borderRadius: rounded ? radius : 'inherit',
-      animationDuration: animated ? animationDuration : 'inherit',
+      animationDuration: animated ? speed : 'inherit',
       flexDirection: direction === 'vertical' ? 'column' : 'row',
       alignItems: alignItems[align],
     }"
@@ -22,7 +22,7 @@
           'skeleton--rounded': rounded,
           'skeleton--keep': keep,
         },
-        animated ? `skeleton--${animationName}` : '',
+        animated ? `skeleton--${animation}` : '',
       ]"
       :style="{
         width,
@@ -30,7 +30,7 @@
         gap,
         margin: `${top} ${right} ${bottom} ${left}`,
         borderRadius: rounded ? radius : 'inherit',
-        animationDuration: animated ? animationDuration : 'inherit',
+        animationDuration: animated ? speed : 'inherit',
         flexDirection: direction === 'vertical' ? 'column' : 'row',
         alignItems: alignItems[align],
       }"
@@ -43,9 +43,9 @@
 <script setup lang="ts">
 import type { PropType } from "#imports";
 
-type animation = "linear" | "boomerang" | "pulse";
-type alignItems = "start" | "center" | "end";
-type itemDirection = "vertical" | "horizontal";
+type AnimationName = "linear" | "boomerang" | "pulse";
+type AlignItems = "start" | "center" | "end";
+type ItemDirection = "vertical" | "horizontal";
 
 const alignItems = {
   start: "flex-start",
@@ -59,11 +59,11 @@ defineProps({
     default: false,
   },
   align: {
-    type: String as PropType<alignItems>,
+    type: String as PropType<AlignItems>,
     default: "center",
   },
   direction: {
-    type: String as PropType<itemDirection>,
+    type: String as PropType<ItemDirection>,
     default: "horizontal",
   },
   repeat: {
@@ -74,11 +74,11 @@ defineProps({
     type: Boolean,
     default: false,
   },
-  animationName: {
-    type: String as PropType<animation>,
+  animation: {
+    type: String as PropType<AnimationName>,
     default: "linear",
   },
-  animationDuration: {
+  speed: {
     type: String,
     default: "3s",
   },

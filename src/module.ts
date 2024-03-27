@@ -2,7 +2,12 @@ import { defineNuxtModule, addComponent, createResolver } from "@nuxt/kit";
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
-  prefix?: string;
+  components?: {
+    Skeleton?: string;
+    SkeletonBlock?: string;
+    SkeletonWrap?: string;
+    SkeletonDiv?: string;
+  };
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -14,37 +19,42 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   defaults: {
-    prefix: "",
+    components: {
+      Skeleton: "Skeleton",
+      SkeletonBlock: "SkeletonBlock",
+      SkeletonWrap: "SkeletonWrap",
+      SkeletonDiv: "SkeletonDiv",
+    },
   },
   setup(options) {
     const { resolve } = createResolver(import.meta.url);
 
     addComponent({
-      name: `${options.prefix}Skeleton`,
-      global: true,
-      filePath: resolve("./runtime/Skeleton.vue"),
-    });
-
-    addComponent({
-      name: `${options.prefix}SkeletonBase`,
+      name: "SkeletonBase",
       global: true,
       filePath: resolve("./runtime/SkeletonBase.vue"),
     });
 
     addComponent({
-      name: `${options.prefix}SkeletonBlock`,
+      name: `${options.components?.Skeleton || "Skeleton"}`,
+      global: true,
+      filePath: resolve("./runtime/Skeleton.vue"),
+    });
+
+    addComponent({
+      name: `${options.components?.SkeletonBlock || "SkeletonBlock"}`,
       global: true,
       filePath: resolve("./runtime/SkeletonBlock.vue"),
     });
 
     addComponent({
-      name: `${options.prefix}SkeletonWrap`,
+      name: `${options.components?.SkeletonWrap || "SkeletonWrap"}`,
       global: true,
       filePath: resolve("./runtime/SkeletonWrap.vue"),
     });
 
     addComponent({
-      name: `${options.prefix}SkeletonDiv`,
+      name: `${options.components?.SkeletonDiv || "SkeletonDiv"}`,
       global: true,
       filePath: resolve("./runtime/SkeletonDiv.vue"),
     });

@@ -11,7 +11,7 @@
     ]"
     :style="{
       margin: `${top} ${right} ${bottom} ${left}`,
-      width: width === '100%' ? width : 'auto',
+      width: width === '100%' ? width : autoSize ? 'auto' : '100%',
       animationDuration: animated ? animationDuration : 'inherit',
       borderRadius: rounded ? radius : 'inherit',
     }"
@@ -46,6 +46,10 @@ defineProps({
   animationDuration: {
     type: String,
     default: "3s",
+  },
+  autoSize: {
+    type: Boolean,
+    default: true,
   },
   rounded: {
     type: Boolean,
