@@ -22,6 +22,7 @@
           'skeleton--rounded': rounded,
           'skeleton--keep': keep,
         },
+        `skeleton--${theme}`,
         animated ? `skeleton--${animation}` : '',
       ]"
       :style="{
@@ -43,9 +44,10 @@
 <script setup lang="ts">
 import type { PropType } from "#imports";
 
-type AnimationName = "linear" | "boomerang" | "pulse";
-type AlignItems = "start" | "center" | "end";
-type ItemDirection = "vertical" | "horizontal";
+type Animation = "linear" | "boomerang" | "pulse";
+type Align = "start" | "center" | "end";
+type Direction = "vertical" | "horizontal";
+type Theme = "dark" | "light";
 
 const alignItems = {
   start: "flex-start",
@@ -59,23 +61,27 @@ defineProps({
     default: false,
   },
   align: {
-    type: String as PropType<AlignItems>,
+    type: String as PropType<Align>,
     default: "center",
   },
   direction: {
-    type: String as PropType<ItemDirection>,
+    type: String as PropType<Direction>,
     default: "horizontal",
   },
   repeat: {
     type: String,
     default: "1",
   },
+  theme: {
+    type: String as PropType<Theme>,
+    default: "light",
+  },
   animated: {
     type: Boolean,
     default: false,
   },
   animation: {
-    type: String as PropType<AnimationName>,
+    type: String as PropType<Animation>,
     default: "linear",
   },
   speed: {

@@ -7,7 +7,8 @@
         'skeleton--rounded': rounded,
         'skeleton--circle': circle,
       },
-      animated ? `skeleton--${animationName}` : '',
+      `skeleton--${theme}`,
+      animated ? `skeleton--${animation}` : '',
     ]"
     :style="{
       margin: `${top} ${right} ${bottom} ${left}`,
@@ -23,6 +24,7 @@
         width,
         height,
         marginBottom: gap,
+        background: color,
       }"
       class="skeleton__item"
     />
@@ -32,15 +34,24 @@
 <script setup lang="ts">
 import type { PropType } from "#imports";
 
-type animation = "linear" | "boomerang" | "pulse";
+type Animation = "linear" | "boomerang" | "pulse";
+type Theme = "dark" | "light";
 
 defineProps({
+  color: {
+    type: String,
+    default: "currentColor",
+  },
+  theme: {
+    type: String as PropType<Theme>,
+    default: "light",
+  },
   animated: {
     type: Boolean,
     default: false,
   },
-  animationName: {
-    type: String as PropType<animation>,
+  animation: {
+    type: String as PropType<Animation>,
     default: "linear",
   },
   animationDuration: {
@@ -104,23 +115,63 @@ defineProps({
 }
 
 .skeleton--animated .skeleton__item {
+  position: relative;
+  overflow: hidden;
+  animation-duration: inherit;
+}
+
+.skeleton--animated .skeleton__item::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
   animation-iteration-count: infinite;
   animation-duration: inherit;
-  background: linear-gradient(90deg, #f0f0f0 25%, #d8d8d8 50%, #f0f0f0 75%);
+  opacity: 0.8;
+}
+
+.skeleton--light .skeleton--animated .skeleton__item::before,
+.skeleton--light.skeleton--animated .skeleton__item::before {
+  background: linear-gradient(
+    90deg,
+    #f0f0f05c 25%,
+    #ffffffa6 50%,
+    #f0f0f05c 75%
+  );
   background-size: 200% 100%;
 }
 
-.skeleton--linear .skeleton__item {
+.skeleton--dark .skeleton--animated .skeleton__item::before,
+.skeleton--dark.skeleton--animated .skeleton__item::before {
+  background: linear-gradient(
+    90deg,
+    #1717175c 25%,
+    #0000005e 50%,
+    #1717175c 75%
+  );
+  background-size: 200% 100%;
+}
+
+.skeleton--linear .skeleton__item::before {
   animation-name: skeleton-linear;
 }
 
-.skeleton--boomerang .skeleton__item {
+.skeleton--boomerang .skeleton__item::before {
   animation-name: skeleton-boomerang;
 }
 
-.skeleton--pulse .skeleton__item {
+.skeleton--light .skeleton--pulse .skeleton__item::before,
+.skeleton--light.skeleton--pulse .skeleton__item::before {
+  background: #ffffffa6;
+}
+
+.skeleton--dark .skeleton--pulse .skeleton__item::before,
+.skeleton--dark.skeleton--pulse .skeleton__item::before {
+  background: #00000059;
+}
+
+.skeleton--pulse .skeleton__item::before {
   animation-name: skeleton-pulse;
-  background: #d8d8d8;
 }
 
 .skeleton--circle .skeleton__item {
