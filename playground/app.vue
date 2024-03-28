@@ -10,7 +10,10 @@
           <S height="200px" />
           <SWrap>
             <S height="75px" width="75px" circle />
-            <S height="25px" repeat="2" />
+            <SBlock gap="10px">
+              <S height="25px" width="40%" />
+              <S height="25px" width="60%" />
+            </SBlock>
           </SWrap>
         </SBlock>
       </SWrap>

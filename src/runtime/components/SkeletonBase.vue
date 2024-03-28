@@ -43,11 +43,7 @@
 
 <script setup lang="ts">
 import type { PropType } from "#imports";
-
-type Animation = "linear" | "boomerang" | "pulse";
-type Align = "start" | "center" | "end";
-type Direction = "vertical" | "horizontal";
-type Theme = "dark" | "light";
+import type { Align, Direction, Theme, Animation } from "../types";
 
 const alignItems = {
   start: "flex-start",

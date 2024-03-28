@@ -11,8 +11,8 @@
       animated ? `skeleton--${animation}` : '',
     ]"
     :style="{
+      width,
       margin: `${top} ${right} ${bottom} ${left}`,
-      width: width === '100%' ? width : autoSize ? 'auto' : '100%',
       animationDuration: animated ? animationDuration : 'inherit',
       borderRadius: rounded ? radius : 'inherit',
     }"
@@ -21,7 +21,7 @@
       v-for="i in Number(repeat)"
       :key="i"
       :style="{
-        width,
+        width: !width.includes('%') ? width : '100%',
         height,
         marginBottom: gap,
         background: color,
@@ -33,9 +33,7 @@
 
 <script setup lang="ts">
 import type { PropType } from "#imports";
-
-type Animation = "linear" | "boomerang" | "pulse";
-type Theme = "dark" | "light";
+import type { Theme, Animation } from "../types";
 
 defineProps({
   color: {
@@ -57,10 +55,6 @@ defineProps({
   animationDuration: {
     type: String,
     default: "3s",
-  },
-  autoSize: {
-    type: Boolean,
-    default: true,
   },
   rounded: {
     type: Boolean,

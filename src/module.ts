@@ -32,31 +32,31 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: "SkeletonBase",
       global: true,
-      filePath: resolve("./runtime/SkeletonBase.vue"),
+      filePath: resolve("./runtime/components/SkeletonBase.vue"),
     });
 
     addComponent({
       name: `${options.components?.Skeleton || "Skeleton"}`,
       global: true,
-      filePath: resolve("./runtime/Skeleton.vue"),
+      filePath: resolve("./runtime/components/Skeleton.vue"),
     });
 
     addComponent({
       name: `${options.components?.SkeletonBlock || "SkeletonBlock"}`,
       global: true,
-      filePath: resolve("./runtime/SkeletonBlock.vue"),
+      filePath: resolve("./runtime/components/SkeletonBlock.vue"),
     });
 
     addComponent({
       name: `${options.components?.SkeletonWrap || "SkeletonWrap"}`,
       global: true,
-      filePath: resolve("./runtime/SkeletonWrap.vue"),
+      filePath: resolve("./runtime/components/SkeletonWrap.vue"),
     });
 
     addComponent({
       name: `${options.components?.SkeletonDiv || "SkeletonDiv"}`,
       global: true,
-      filePath: resolve("./runtime/SkeletonDiv.vue"),
+      filePath: resolve("./runtime/components/SkeletonDiv.vue"),
     });
   },
 });

@@ -1,10 +1,25 @@
 {
   "name": "nuxt-skeleton",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A skeleton & placeholder module for Nuxt 3",
   "repository": "volkanakkus/nuxt-skeleton",
   "license": "MIT",
   "type": "module",
+  "keywords": [
+    "nuxt",
+    "module",
+    "vue",
+    "skeleton",
+    "placeholder",
+    "loader",
+    "component",   
+    "nuxt3",  
+    "nuxt-3",  
+    "nuxt-module",  
+    "nuxt-component",  
+    "typescript",
+    "front-end"  
+  ],
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
