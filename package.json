@@ -12,13 +12,13 @@
     "skeleton",
     "placeholder",
     "loader",
-    "component",   
-    "nuxt3",  
-    "nuxt-3",  
-    "nuxt-module",  
-    "nuxt-component",  
+    "component",
+    "nuxt3",
+    "nuxt-3",
+    "nuxt-module",
+    "nuxt-component",
     "typescript",
-    "front-end"  
+    "front-end"
   ],
   "exports": {
     ".": {
