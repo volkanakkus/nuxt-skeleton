@@ -103,6 +103,10 @@ npm run lint
 # Release new version
 npm run release
 ```
+---
+
+This software is licensed under the [MIT License](https://github.com/volkanakkus/nuxt-skeleton/blob/main/LICENSE) | @volkanakkus 
+
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/nuxt-skeleton/latest.svg?style=flat&colorA=020420&colorB=00DC82
