@@ -77,6 +77,10 @@ We're preparing the examples, it will be added soon.
 - [x] Color Support
   - [x] Dark and Light Mode
   - [ ] Adjustable Opacity of Animations
+  - [ ] Adjustable Color of Animations
+- [ ] Add Random Width Option for When Skeletons Repeats
+- [ ] Allow Multiple Widths and Heights Option When Skeletons Repeats
+- [ ] Configure Default Options from Module Options
 
 ## Development
 
